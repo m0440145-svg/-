@@ -1,0 +1,1 @@
+<!doctype html><html lang="ar" dir="rtl"><meta charset="utf-8"><body><a href="/">عودة</a><h1>{{ item.reference }} - {{ item.subject }}</h1><p>الجهة: {{ item.entity }}</p><p>القسم: {{ item.department }}</p><h2>المسار</h2>{% for e in item.events.all %}<article><b>{{ e.action }}</b> - {{ e.actor }} - {{ e.created_at }}<p>{{ e.details }}</p></article>{% endfor %}</body></html>
