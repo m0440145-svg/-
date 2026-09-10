@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>منصة مراسلات | الصادر والوارد</title>
+  <meta name="description" content="إدارة المراسلات والمعاملات وتتبعها">
+  <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <aside class="sidebar">
+    <div class="brand"><span class="brand-mark">م</span><div><strong>مراسلات</strong><small>جمعية الإحسان</small></div></div>
+    <nav id="nav">
+      <button class="nav-item active" data-view="dashboard"><span>⌂</span>لوحة المتابعة</button>
+      <button class="nav-item" data-view="transactions"><span>⇄</span>المعاملات</button>
+      <button class="nav-item" data-view="inbox"><span>↓</span>البريد الوارد <b>8</b></button>
+      <button class="nav-item" data-view="outbox"><span>↑</span>البريد الصادر</button>
+      <button class="nav-item" data-view="reports"><span>▥</span>التقارير والمؤشرات</button>
+      <button class="nav-item" data-view="templates"><span>▤</span>قوالب الخطابات</button>
+      <button class="nav-item" data-view="settings"><span>⚙</span>الإعدادات والصلاحيات</button>
+    </nav>
+    <div class="security"><span>✓</span><div><strong>اتصال آمن</strong><small>آخر نسخ احتياطي: اليوم 03:00</small></div></div>
+    <div class="user"><div class="avatar">م ن</div><div><strong>محمد ناجي</strong><small>مدير النظام</small></div><button>⋮</button></div>
+  </aside>
+
+  <main>
+    <header class="topbar"><button class="menu" id="menu">☰</button><div class="page-title"><h1 id="pageTitle">لوحة المتابعة</h1><p id="today"></p></div><div class="top-actions"><label class="quick-search">⌕<input id="globalSearch" placeholder="بحث برقم أو موضوع المعاملة"></label><button class="icon-btn" title="الإشعارات">♢<i>3</i></button><button class="primary" id="newBtn">＋ معاملة جديدة</button></div></header>
+
+    <section class="view active" id="dashboard">
+      <div class="welcome"><div><span class="eyebrow">نظرة تنفيذية</span><h2>صباح الخير، محمد</h2><p>لديك <strong>3 معاملات</strong> تحتاج تدخلك اليوم، منها معاملتان تجاوزتا مدة الاستجابة.</p></div><button class="outline" id="showLate">عرض المتأخرات ←</button></div>
+      <div class="kpis">
+        <article><span class="kpi-icon orange">↓</span><div><small>الوارد هذا الشهر</small><strong>148</strong><em class="up">↑ 12%</em></div></article>
+        <article><span class="kpi-icon navy">↑</span><div><small>الصادر هذا الشهر</small><strong>96</strong><em class="up">↑ 8%</em></div></article>
+        <article><span class="kpi-icon red">!</span><div><small>معاملات متأخرة</small><strong>12</strong><em>8.1% من المفتوحة</em></div></article>
+        <article><span class="kpi-icon green">◷</span><div><small>متوسط زمن الإنجاز</small><strong>2.4 <b>يوم</b></strong><em class="up">أفضل بـ 0.6 يوم</em></div></article>
+      </div>
+      <div class="grid-two">
+        <section class="panel"><div class="panel-head"><div><h3>حركة المراسلات</h3><p>آخر 6 أشهر</p></div><select><option>جميع الإدارات</option></select></div><div class="chart" id="chart"></div><div class="legend"><span><i class="dot orange"></i>الوارد</span><span><i class="dot navy"></i>الصادر</span></div></section>
+        <section class="panel"><div class="panel-head"><div><h3>الالتزام بمدة الاستجابة</h3><p>حسب الإدارة</p></div><button>•••</button></div><div class="progress-list" id="progressList"></div></section>
+      </div>
+      <section class="panel recent"><div class="panel-head"><div><h3>معاملات تتطلب المتابعة</h3><p>مرتبة حسب الأولوية ومدة التأخير</p></div><button class="text-btn" data-open-view="transactions">عرض جميع المعاملات ←</button></div><div class="table-wrap"><table><thead><tr><th>رقم المعاملة</th><th>الموضوع والجهة</th><th>الإدارة الحالية</th><th>تاريخ الاستلام</th><th>الحالة</th><th>المدة</th><th></th></tr></thead><tbody id="urgentRows"></tbody></table></div></section>
+    </section>
+
+    <section class="view" id="transactions">
+      <div class="toolbar"><div class="tabs"><button class="active" data-filter="all">الكل <b>24</b></button><button data-filter="incoming">وارد</button><button data-filter="outgoing">صادر</button><button data-filter="late">متأخر <b class="danger">12</b></button></div><button class="filter-btn" id="filterBtn">☷ الفلاتر</button></div>
+      <div class="filter-panel" id="filterPanel"><select id="deptFilter"><option value="all">جميع الإدارات</option><option>الإدارة التنفيذية</option><option>الموارد المالية</option><option>خدمات المستفيدين</option><option>الشراكات</option></select><select id="statusFilter"><option value="all">جميع الحالات</option><option value="قيد الإجراء">قيد الإجراء</option><option value="متأخرة">متأخرة</option><option value="مكتملة">مكتملة</option></select><input type="date"><button class="outline" id="resetFilters">إعادة ضبط</button></div>
+      <section class="panel"><div class="table-wrap"><table><thead><tr><th>الرقم</th><th>نوعها</th><th>الموضوع</th><th>الجهة</th><th>الإدارة الحالية</th><th>الحالة</th><th>SLA</th><th></th></tr></thead><tbody id="allRows"></tbody></table></div><div class="pagination"><span>عرض 1–6 من 24</span><button disabled>‹</button><button class="active">1</button><button>2</button><button>3</button><button>4</button><button>›</button></div></section>
+    </section>
+
+    <section class="view empty-view" id="inbox"><div class="empty-icon">↓</div><h2>البريد الوارد</h2><p>المعاملات الواردة من الجهات الخارجية تظهر هنا مع حالة الفرز والتوجيه.</p><button class="primary" data-open-view="transactions">عرض الوارد</button></section>
+    <section class="view empty-view" id="outbox"><div class="empty-icon">↑</div><h2>البريد الصادر</h2><p>الخطابات الصادرة والمعتمدة، مع أرقام الصادر وإيصالات التسليم.</p><button class="primary" data-open-view="transactions">عرض الصادر</button></section>
+    <section class="view" id="reports"><div class="report-grid"><article class="report-card"><span>◷</span><h3>زمن الاستجابة</h3><p>متوسط الإنجاز حسب الإدارة ونوع المعاملة.</p><button>تصدير PDF</button></article><article class="report-card"><span>!</span><h3>تقرير المتأخرات</h3><p>أسباب التأخير والمسؤولية والإجراء التصحيحي.</p><button>تصدير Excel</button></article><article class="report-card"><span>✓</span><h3>الالتزام التشغيلي</h3><p>مؤشرات SLA ونسب الإغلاق ضمن المدة.</p><button>فتح التقرير</button></article></div></section>
+    <section class="view empty-view" id="templates"><div class="empty-icon">▤</div><h2>قوالب الخطابات</h2><p>قوالب عربية مع حقول تلقائية للتاريخ والمرجع والجهة والتوقيع.</p><button class="primary">إضافة قالب</button></section>
+    <section class="view" id="settings"><section class="panel settings-grid"><div><h3>الهيكل والصلاحيات</h3><p>مجلس الإدارة ← المدير التنفيذي ← الإدارات ← الموظفون</p><button class="outline">إدارة الأدوار</button></div><div><h3>أيام العمل وSLA</h3><p>الأحد–الخميس، العطلات الرسمية مستبعدة تلقائيًا</p><button class="outline">ضبط المهل</button></div><div><h3>قنوات التنبيه</h3><p>إشعارات داخلية، بريد إلكتروني، WhatsApp Business API</p><button class="outline">إدارة التكاملات</button></div><div><h3>الأمان والتدقيق</h3><p>سجل تغييرات غير قابل للعبث، IP، نسخ احتياطي وتشفير</p><button class="outline">عرض سجل التدقيق</button></div></section></section>
+  </main>
+
+  <div class="backdrop" id="backdrop"></div>
+  <aside class="drawer" id="drawer"><div class="drawer-head"><div><span class="eyebrow">تفاصيل المعاملة</span><h2 id="drawerTitle"></h2></div><button id="closeDrawer">×</button></div><div id="drawerBody"></div></aside>
+  <dialog id="newDialog"><form method="dialog"><div class="modal-head"><div><span class="eyebrow">تسجيل مراسلة</span><h2>معاملة جديدة</h2></div><button value="cancel">×</button></div><div class="form-grid"><label>نوع المعاملة<select id="newType"><option>وارد</option><option>صادر</option><option>داخلي</option></select></label><label>درجة الأولوية<select><option>عادية</option><option>عاجلة</option><option>عاجلة جدًا</option></select></label><label class="full">موضوع المعاملة<input required placeholder="اكتب موضوعًا واضحًا ومختصرًا"></label><label>الجهة<input required placeholder="اسم الجهة"></label><label>الإدارة المحال إليها<select><option>الإدارة التنفيذية</option><option>الموارد المالية</option><option>خدمات المستفيدين</option><option>الشراكات</option></select></label><label>مهلة الاستجابة<select><option>3 أيام عمل</option><option>5 أيام عمل</option><option>7 أيام عمل</option></select></label><label>التاريخ<input type="date"></label><label class="full upload">⌁ اسحب المرفقات هنا أو اضغط للاختيار<input type="file" multiple></label></div><div class="modal-actions"><button value="cancel" class="outline">إلغاء</button><button value="default" class="primary" id="saveNew">حفظ وتسجيل المعاملة</button></div></form></dialog>
+  <div class="toast" id="toast">تم تسجيل المعاملة بنجاح</div>
+  <script src="app.js"></script>
+</body>
+</html>
