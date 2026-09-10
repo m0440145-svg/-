@@ -6,7 +6,7 @@
   <meta name="description" content="إدارة المراسلات والمعاملات وتتبعها">
   <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css"><link rel="stylesheet" href="priority.css">
+  <link rel="stylesheet" href="styles.css"><link rel="stylesheet" href="priority.css"><link rel="stylesheet" href="advanced.css">
 </head>
 <body>
   <aside class="sidebar">
@@ -44,7 +44,18 @@
 
     <section class="view" id="transactions">
       <div class="toolbar"><div class="tabs"><button class="active" data-filter="all">الكل <b>24</b></button><button data-filter="incoming">وارد</button><button data-filter="outgoing">صادر</button><button data-filter="late">متأخر <b class="danger">12</b></button></div><button class="filter-btn" id="filterBtn">☷ الفلاتر</button></div>
-      <div class="filter-panel" id="filterPanel"><select id="deptFilter"><option value="all">جميع الإدارات</option><option>مجلس الإدارة</option><option>المدير التنفيذي</option><option>السكرتارية</option><option>مساعد المدير التنفيذي</option><option>وحدة الاتصال المؤسسي</option><option>وحدة التقنية والتحول الرقمي</option><option>وحدة الخدمات الرعوية</option><option>وحدة خدمة المجتمع</option><option>وحدة الخدمات التنموية</option><option>وحدة التطوع</option><option>وحدة الموارد البشرية</option><option>وحدة الشؤون المالية والإدارية</option><option>وحدة المراجعة الداخلية</option><option>وحدة الاستثمار</option><option>وحدة التميز المؤسسي</option><option>وحدة الخدمات المساندة</option></select><select id="statusFilter"><option value="all">جميع الحالات</option><option value="قيد الإجراء">قيد الإجراء</option><option value="متأخرة">متأخرة</option><option value="مكتملة">مكتملة</option></select><select id="priorityFilter"><option value="all">جميع الأولويات</option><option>حرجة</option><option>عاجلة</option><option>مهمة</option><option>عادية</option><option>منخفضة</option></select><input type="date"><button class="outline" id="resetFilters">إعادة ضبط</button></div>
+      <div class="filter-panel advanced-search" id="filterPanel">
+        <label>اسم منشئ المعاملة<input id="nameFilter" placeholder="البحث بالاسم"></label>
+        <label>الموضوع<input id="subjectFilter" placeholder="كلمات من الموضوع"></label>
+        <label>الجهة<input id="entityFilter" placeholder="اسم الجهة"></label>
+        <label>رقم الهوية<input id="identityFilter" inputmode="numeric" maxlength="10" placeholder="رقم الهوية"></label>
+        <label>الرقم المرجعي<input id="referenceFilter" placeholder="مثال: وارد-2026"></label>
+        <label>الوحدة<select id="deptFilter"><option value="all">جميع الوحدات</option><option>مجلس الإدارة</option><option>المدير التنفيذي</option><option>السكرتارية</option><option>مساعد المدير التنفيذي</option><option>وحدة الاتصال المؤسسي</option><option>وحدة التقنية والتحول الرقمي</option><option>وحدة الخدمات الرعوية</option><option>وحدة خدمة المجتمع</option><option>وحدة الخدمات التنموية</option><option>وحدة التطوع</option><option>وحدة الموارد البشرية</option><option>وحدة الشؤون المالية والإدارية</option><option>وحدة المراجعة الداخلية</option><option>وحدة الاستثمار</option><option>وحدة التميز المؤسسي</option><option>وحدة الخدمات المساندة</option></select></label>
+        <label>الحالة<select id="statusFilter"><option value="all">جميع الحالات</option><option value="جديدة">جديدة</option><option value="قيد الإجراء">قيد الإجراء</option><option value="بانتظار الرد">بانتظار الرد</option><option value="متأخرة">متأخرة</option><option value="مكتملة">مكتملة</option><option value="مغلقة">مغلقة</option></select></label>
+        <label>الأولوية<select id="priorityFilter"><option value="all">جميع الأولويات</option><option>حرجة</option><option>عاجلة</option><option>مهمة</option><option>عادية</option><option>منخفضة</option></select></label>
+        <label>من تاريخ<input id="fromFilter" type="date"></label><label>إلى تاريخ<input id="toFilter" type="date"></label>
+        <div class="search-actions"><button class="primary" id="applySearch">بحث</button><button class="outline" id="resetFilters">إعادة ضبط</button></div>
+      </div>
       <section class="panel"><div class="table-wrap"><table><thead><tr><th>الرقم</th><th>نوعها</th><th>الموضوع</th><th>الجهة</th><th>الأولوية</th><th>الإدارة الحالية</th><th>الحالة</th><th>SLA</th><th></th></tr></thead><tbody id="allRows"></tbody></table></div><div class="pagination"><span>عرض 1–6 من 24</span><button disabled>‹</button><button class="active">1</button><button>2</button><button>3</button><button>4</button><button>›</button></div></section>
     </section>
 
